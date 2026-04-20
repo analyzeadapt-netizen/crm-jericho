@@ -49,7 +49,7 @@ const salesGoalsData = [
   { name: "Restante", value: 35 },
 ];
 
-const COLORS = ["#7c3aed", "#1e1b4b"];
+const COLORS = ["#10b981", "#020617"];
 
 export default function Dashboard() {
   return (
@@ -111,8 +111,8 @@ export default function Dashboard() {
               <AreaChart data={revenueData}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#7c3aed" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ffffff10" />
@@ -122,7 +122,7 @@ export default function Dashboard() {
                   contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #ffffff20", borderRadius: "8px" }}
                   itemStyle={{ color: "#f8fafc" }}
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#7c3aed" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={3} />
+                <Area type="monotone" dataKey="revenue" stroke="#10b981" fillOpacity={1} fill="url(#colorRevenue)" strokeWidth={3} />
                 <Area type="monotone" dataKey="expenses" stroke="#3b82f6" fillOpacity={0} strokeWidth={2} strokeDasharray="5 5" />
               </AreaChart>
             </ResponsiveContainer>

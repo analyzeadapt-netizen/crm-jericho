@@ -8,12 +8,44 @@ export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const contacts = pgTable("contacts", {
+export const clientes = pgTable("clientes", {
   id: uuid("id").defaultRandom().primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone"),
-  company: text("company"),
-  status: text("status").default("lead"), // lead, active, inactive
+  cod: text("cod").unique(),
+  nome: text("nome").notNull(),
+  nif: text("nif"),
+  morada: text("morada"),
+  telefone: text("telefone"),
+  setor: text("setor"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const orcamentos = pgTable("orcamentos", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  cod: text("cod"),
+  valorInicial: text("valor_inicial"),
+  valorAtual: text("valor_atual"),
+  estado: text("estado").default("Aberto"), // Aberto, Fechado, Andamento
+  observacoes: text("observacoes"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const fornecedores = pgTable("fornecedores", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  nomeEmpresa: text("nome_empresa").notNull(),
+  setor: text("setor"),
+  descricaoProduto: text("descricao_produto"),
+  quantidade: text("quantidade"),
+  valorProduto: text("valor_produto"),
+  valorTotal: text("valor_total"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const colaboradores = pgTable("colaboradores", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  nome: text("nome").notNull(),
+  nif: text("nif"),
+  telemovel: text("telemovel"),
+  funcao: text("funcao"),
+  endereco: text("endereco"),
   createdAt: timestamp("created_at").defaultNow(),
 });
