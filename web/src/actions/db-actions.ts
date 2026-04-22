@@ -5,7 +5,8 @@ import {
   clientes, 
   orcamentos, 
   fornecedores, 
-  colaboradores 
+  colaboradores,
+  obras
 } from "@/db/schema";
 import { revalidatePath } from "next/cache";
 
@@ -47,4 +48,14 @@ export async function getColaboradores() {
 export async function addColaborador(data: typeof colaboradores.$inferInsert) {
   await db.insert(colaboradores).values(data);
   revalidatePath("/dashboard/colaboradores");
+}
+
+// --- OBRAS ---
+export async function getObras() {
+  return await db.select().from(obras).orderBy(obras.createdAt);
+}
+
+export async function addObra(data: typeof obras.$inferInsert) {
+  await db.insert(obras).values(data);
+  revalidatePath("/dashboard/obras");
 }

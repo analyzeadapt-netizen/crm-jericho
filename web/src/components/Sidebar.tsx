@@ -7,7 +7,8 @@ import {
   Users, 
   FileText, 
   Truck, 
-  Briefcase 
+  Briefcase,
+  HardHat
 } from "lucide-react";
 
 const routes = [
@@ -35,6 +36,11 @@ const routes = [
     label: "Colaboradores",
     icon: Briefcase,
     href: "/dashboard/colaboradores",
+  },
+  {
+    label: "Obras",
+    icon: HardHat,
+    href: "/dashboard/obras",
   },
 ];
 

@@ -49,3 +49,16 @@ export const colaboradores = pgTable("colaboradores", {
   endereco: text("endereco"),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const obras = pgTable("obras", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  cliente: text("cliente"),
+  cod: text("cod"),
+  tipo: text("tipo"),
+  local: text("local"),
+  duracao: text("duracao"),
+  inicio: text("inicio"),
+  fim: text("fim"),
+  valor: text("valor"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
