@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getObras, addObra } from "@/actions/db-actions";
+import { ObraRowActions } from "./obra-row-actions";
 
 export default async function ObrasPage() {
   const obras = await getObras();
@@ -117,12 +118,13 @@ export default async function ObrasPage() {
               <TableHead className="text-emerald-400">Local</TableHead>
               <TableHead className="text-emerald-400">Duração</TableHead>
               <TableHead className="text-emerald-400">Valor</TableHead>
+              <TableHead className="w-[50px]"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {obras.length === 0 ? (
               <TableRow className="border-white/10">
-                <TableCell colSpan={6} className="text-center py-10 text-muted-foreground">
+                <TableCell colSpan={7} className="text-center py-10 text-muted-foreground">
                   Nenhuma obra registada. Adicione o seu primeiro projeto.
                 </TableCell>
               </TableRow>
@@ -138,6 +140,9 @@ export default async function ObrasPage() {
                     {obra.inicio && obra.fim && ` (${obra.inicio} a ${obra.fim})`}
                   </TableCell>
                   <TableCell>{obra.valor ? `€${obra.valor}` : "-"}</TableCell>
+                  <TableCell>
+                    <ObraRowActions obra={obra} />
+                  </TableCell>
                 </TableRow>
               ))
             )}

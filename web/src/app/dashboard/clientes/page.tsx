@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getClientes, addCliente } from "@/actions/db-actions";
+import { ClienteRowActions } from "./cliente-row-actions";
 
 export default async function ClientesPage() {
   const clientes = await getClientes();
@@ -100,12 +101,13 @@ export default async function ClientesPage() {
               <TableHead className="text-emerald-400">NIF</TableHead>
               <TableHead className="text-emerald-400">Telefone</TableHead>
               <TableHead className="text-emerald-400">Setor</TableHead>
+              <TableHead className="w-[50px]"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {clientes.length === 0 ? (
               <TableRow className="border-white/10">
-                <TableCell colSpan={5} className="text-center py-10 text-muted-foreground">
+                <TableCell colSpan={6} className="text-center py-10 text-muted-foreground">
                   Nenhum cliente encontrado. Adicione o seu primeiro cliente.
                 </TableCell>
               </TableRow>
@@ -117,6 +119,9 @@ export default async function ClientesPage() {
                   <TableCell>{cliente.nif || "-"}</TableCell>
                   <TableCell>{cliente.telefone || "-"}</TableCell>
                   <TableCell>{cliente.setor || "-"}</TableCell>
+                  <TableCell>
+                    <ClienteRowActions cliente={cliente} />
+                  </TableCell>
                 </TableRow>
               ))
             )}
