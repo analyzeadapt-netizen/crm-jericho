@@ -56,8 +56,8 @@ export default async function OrcamentosPage() {
             </DialogHeader>
             <form action={createOrcamento} className="space-y-4 pt-4">
               <div className="grid gap-2">
-                <Label htmlFor="cod">Código *</Label>
-                <Input id="cod" name="cod" required className="bg-white/5 border-white/10 text-white" />
+                <Label htmlFor="cod">Código (Automático)</Label>
+                <Input id="cod" name="cod" placeholder="ORC-04-26-001" className="bg-white/5 border-white/10 text-white" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">

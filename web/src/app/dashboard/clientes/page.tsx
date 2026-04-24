@@ -66,8 +66,8 @@ export default async function ClientesPage() {
                   <Input id="nif" name="nif" className="bg-white/5 border-white/10 text-white" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="cod">Cód. Interno</Label>
-                  <Input id="cod" name="cod" className="bg-white/5 border-white/10 text-white" />
+                  <Label htmlFor="cod">Cód. (Automático)</Label>
+                  <Input id="cod" name="cod" placeholder="CLI-04-26-001" className="bg-white/5 border-white/10 text-white" />
                 </div>
               </div>
               <div className="grid gap-2">

@@ -10,6 +10,7 @@ import {
 } from "@/db/schema";
 import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
+import { generateAutomaticCode } from "@/lib/generate-code";
 
 // --- CLIENTES ---
 export async function getClientes() {
@@ -17,7 +18,8 @@ export async function getClientes() {
 }
 
 export async function addCliente(data: typeof clientes.$inferInsert) {
-  await db.insert(clientes).values(data);
+  const cod = data.cod || await generateAutomaticCode("clientes");
+  await db.insert(clientes).values({ ...data, cod });
   revalidatePath("/dashboard/clientes");
 }
 
@@ -37,7 +39,8 @@ export async function getOrcamentos() {
 }
 
 export async function addOrcamento(data: typeof orcamentos.$inferInsert) {
-  await db.insert(orcamentos).values(data);
+  const cod = data.cod || await generateAutomaticCode("orcamentos");
+  await db.insert(orcamentos).values({ ...data, cod });
   revalidatePath("/dashboard/orcamentos");
 }
 
@@ -57,6 +60,7 @@ export async function getFornecedores() {
 }
 
 export async function addFornecedor(data: typeof fornecedores.$inferInsert) {
+  // Fornecedores podem não ter campo cod no esquema original, mas vou precaver
   await db.insert(fornecedores).values(data);
   revalidatePath("/dashboard/fornecedores");
 }
@@ -77,7 +81,8 @@ export async function getColaboradores() {
 }
 
 export async function addColaborador(data: typeof colaboradores.$inferInsert) {
-  await db.insert(colaboradores).values(data);
+  const cod = data.cod || await generateAutomaticCode("colaboradores");
+  await db.insert(colaboradores).values({ ...data, cod });
   revalidatePath("/dashboard/colaboradores");
 }
 
@@ -97,7 +102,8 @@ export async function getObras() {
 }
 
 export async function addObra(data: typeof obras.$inferInsert) {
-  await db.insert(obras).values(data);
+  const cod = data.cod || await generateAutomaticCode("obras");
+  await db.insert(obras).values({ ...data, cod });
   revalidatePath("/dashboard/obras");
 }
 

@@ -42,6 +42,7 @@ export const fornecedores = pgTable("fornecedores", {
 
 export const colaboradores = pgTable("colaboradores", {
   id: uuid("id").defaultRandom().primaryKey(),
+  cod: text("cod").unique(),
   nome: text("nome").notNull(),
   nif: text("nif"),
   telemovel: text("telemovel"),

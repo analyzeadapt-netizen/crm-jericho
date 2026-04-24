@@ -64,8 +64,8 @@ export default async function ObrasPage() {
                   <Input id="cliente" name="cliente" required className="bg-white/5 border-white/10 text-white" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="cod">Cód. Obra *</Label>
-                  <Input id="cod" name="cod" required className="bg-white/5 border-white/10 text-white" />
+                  <Label htmlFor="cod">Cód. Obra (Automático)</Label>
+                  <Input id="cod" name="cod" placeholder="OBR-04-26-001" className="bg-white/5 border-white/10 text-white" />
                 </div>
               </div>
               

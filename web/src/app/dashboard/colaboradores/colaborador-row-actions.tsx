@@ -31,6 +31,7 @@ import { updateColaborador, deleteColaborador } from "@/actions/db-actions";
 
 type Colaborador = {
   id: string;
+  cod: string | null;
   nome: string;
   nif: string | null;
   telemovel: string | null;
@@ -48,6 +49,7 @@ export function ColaboradorRowActions({ colaborador }: { colaborador: Colaborado
     setIsSubmitting(true);
     try {
       await updateColaborador(colaborador.id, {
+        cod: formData.get("cod") as string,
         nome: formData.get("nome") as string,
         nif: formData.get("nif") as string,
         telemovel: formData.get("telemovel") as string,
@@ -104,9 +106,15 @@ export function ColaboradorRowActions({ colaborador }: { colaborador: Colaborado
             <DialogTitle>Editar Colaborador</DialogTitle>
           </DialogHeader>
           <form action={handleEdit} className="space-y-4 pt-4">
-            <div className="grid gap-2">
-              <Label htmlFor="nome">Nome Completo *</Label>
-              <Input id="nome" name="nome" defaultValue={colaborador.nome} required className="bg-white/5 border-white/10 text-white" />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="cod">Código</Label>
+                <Input id="cod" name="cod" defaultValue={colaborador.cod || ""} className="bg-white/5 border-white/10 text-white" />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="nome">Nome Completo *</Label>
+                <Input id="nome" name="nome" defaultValue={colaborador.nome} required className="bg-white/5 border-white/10 text-white" />
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">

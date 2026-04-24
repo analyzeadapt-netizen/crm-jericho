@@ -27,6 +27,7 @@ export default async function ColaboradoresPage() {
     "use server";
 
     await addColaborador({
+      cod: formData.get("cod") as string,
       nome: formData.get("nome") as string,
       nif: formData.get("nif") as string,
       telemovel: formData.get("telemovel") as string,
@@ -55,9 +56,15 @@ export default async function ColaboradoresPage() {
               <DialogTitle>Adicionar Colaborador</DialogTitle>
             </DialogHeader>
             <form action={createColaborador} className="space-y-4 pt-4">
-              <div className="grid gap-2">
-                <Label htmlFor="nome">Nome Completo *</Label>
-                <Input id="nome" name="nome" required className="bg-white/5 border-white/10 text-white" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="cod">Cód. (Automático)</Label>
+                  <Input id="cod" name="cod" placeholder="COL-04-26-001" className="bg-white/5 border-white/10 text-white" />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="nome">Nome Completo *</Label>
+                  <Input id="nome" name="nome" required className="bg-white/5 border-white/10 text-white" />
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
@@ -89,6 +96,7 @@ export default async function ColaboradoresPage() {
         <Table>
           <TableHeader className="bg-white/5">
             <TableRow className="border-white/10">
+              <TableHead className="text-emerald-400">Cód.</TableHead>
               <TableHead className="text-emerald-400">Nome</TableHead>
               <TableHead className="text-emerald-400">NIF</TableHead>
               <TableHead className="text-emerald-400">Telemóvel</TableHead>
@@ -107,6 +115,7 @@ export default async function ColaboradoresPage() {
             ) : (
               colaboradores.map((colaborador) => (
                 <TableRow key={colaborador.id} className="border-white/10 hover:bg-white/5">
+                  <TableCell className="font-medium text-emerald-400">{colaborador.cod || "-"}</TableCell>
                   <TableCell className="font-medium">{colaborador.nome}</TableCell>
                   <TableCell>{colaborador.nif || "-"}</TableCell>
                   <TableCell>{colaborador.telemovel || "-"}</TableCell>

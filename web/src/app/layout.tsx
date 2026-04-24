@@ -30,12 +30,8 @@ export default function RootLayout({
               </div>
               <nav className="flex items-center gap-4">
                 <Show when="signed-out">
-                  <SignInButton mode="modal">
-                    <button className="text-sm font-medium hover:text-primary transition-colors">Entrar</button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                    <button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Começar Agora</button>
-                  </SignUpButton>
+                  <SignInButton mode="modal"><button className="text-sm font-medium hover:text-primary transition-colors">Entrar</button></SignInButton>
+                  <SignUpButton mode="modal"><button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Começar Agora</button></SignUpButton>
                 </Show>
                 <Show when="signed-in">
                   <UserButton />
