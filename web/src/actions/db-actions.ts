@@ -60,8 +60,8 @@ export async function getFornecedores() {
 }
 
 export async function addFornecedor(data: typeof fornecedores.$inferInsert) {
-  // Fornecedores podem não ter campo cod no esquema original, mas vou precaver
-  await db.insert(fornecedores).values(data);
+  const cod = data.cod || await generateAutomaticCode("fornecedores");
+  await db.insert(fornecedores).values({ ...data, cod });
   revalidatePath("/dashboard/fornecedores");
 }
 

@@ -1,4 +1,4 @@
-# Technical Specifications - CRM JERICHO (Ref. CRM Easy)
+# Technical Specifications - CRM JERICO (Ref. CRM Easy)
 
 ## Frontend
 - **Framework:** Next.js 14/15 (App Router)

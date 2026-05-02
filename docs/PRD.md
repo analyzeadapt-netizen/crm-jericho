@@ -1,7 +1,7 @@
-# Product Requirements Document (PRD) - CRM JERICHO
+# Product Requirements Document (PRD) - CRM JERICO
 
 ## Visão Geral
-O CRM JERICHO visa simplificar a gestão de vendas para pequenas e médias empresas, focando numa experiência de utilizador fluida e num design de alta qualidade.
+O CRM JERICO visa simplificar a gestão de vendas para pequenas e médias empresas, focando numa experiência de utilizador fluida e num design de alta qualidade.
 
 ## Objetivos
 - Reduzir o tempo de introdução de dados em 30%.

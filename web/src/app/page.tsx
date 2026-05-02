@@ -51,7 +51,7 @@ export default function LandingPage() {
             variants={itemVariants}
             className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            O CRM JERICHO foi desenhado para equipas de alta performance que procuram simplicidade,
+            O CRM JERICO foi desenhado para equipas de alta performance que procuram simplicidade,
             velocidade e uma visão clara do seu pipeline de vendas.
           </motion.p>
 

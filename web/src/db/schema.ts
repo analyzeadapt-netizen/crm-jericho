@@ -31,6 +31,7 @@ export const orcamentos = pgTable("orcamentos", {
 
 export const fornecedores = pgTable("fornecedores", {
   id: uuid("id").defaultRandom().primaryKey(),
+  cod: text("cod").unique(),
   nomeEmpresa: text("nome_empresa").notNull(),
   setor: text("setor"),
   descricaoProduto: text("descricao_produto"),
@@ -54,6 +55,7 @@ export const colaboradores = pgTable("colaboradores", {
 export const obras = pgTable("obras", {
   id: uuid("id").defaultRandom().primaryKey(),
   cliente: text("cliente"),
+  clienteNif: text("cliente_nif"),
   cod: text("cod"),
   tipo: text("tipo"),
   local: text("local"),

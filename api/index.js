@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to CRM JERICHO API' });
+  res.json({ message: 'Welcome to CRM JERICO API' });
 });
 
 app.listen(PORT, () => {

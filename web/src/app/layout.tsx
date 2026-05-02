@@ -9,7 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "CRM JERICHO | Gestão de Vendas Premium",
+  title: "CRM JERICO | Gestão de Vendas Premium",
   description: "O CRM moderno para empresas que procuram excelência e simplicidade.",
 };
 
@@ -26,12 +26,14 @@ export default function RootLayout({
             <div className="container mx-auto px-6 h-16 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center font-bold text-white">J</div>
-                <span className="text-xl font-bold tracking-tight">JERICHO</span>
+                <span className="text-xl font-bold tracking-tight">JERICO</span>
               </div>
               <nav className="flex items-center gap-4">
                 <Show when="signed-out">
-                  <SignInButton mode="modal"><button className="text-sm font-medium hover:text-primary transition-colors">Entrar</button></SignInButton>
-                  <SignUpButton mode="modal"><button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Começar Agora</button></SignUpButton>
+                  <div className="flex items-center gap-4">
+                    <SignInButton mode="modal"><button className="text-sm font-medium hover:text-primary transition-colors">Entrar</button></SignInButton>
+                    <SignUpButton mode="modal"><button className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium transition-all">Começar Agora</button></SignUpButton>
+                  </div>
                 </Show>
                 <Show when="signed-in">
                   <UserButton />

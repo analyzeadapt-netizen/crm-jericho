@@ -1,13 +1,6 @@
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { ObrasClient } from "./obras-client";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getObras, addObra } from "@/actions/db-actions";
-import { ObraRowActions } from "./obra-row-actions";
 
 export default async function ObrasPage() {
   const obras = await getObras();
@@ -28,6 +20,7 @@ export default async function ObrasPage() {
     
     await addObra({
       cliente: formData.get("cliente") as string,
+      clienteNif: formData.get("clienteNif") as string,
       cod: formData.get("cod") as string,
       tipo: formData.get("tipo") as string,
       local: formData.get("local") as string,
@@ -64,9 +57,13 @@ export default async function ObrasPage() {
                   <Input id="cliente" name="cliente" required className="bg-white/5 border-white/10 text-white" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="cod">Cód. Obra (Automático)</Label>
-                  <Input id="cod" name="cod" placeholder="OBR-04-26-001" className="bg-white/5 border-white/10 text-white" />
+                  <Label htmlFor="clienteNif">NIF do Cliente</Label>
+                  <Input id="clienteNif" name="clienteNif" className="bg-white/5 border-white/10 text-white" />
                 </div>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="cod">Cód. Obra (Automático)</Label>
+                <Input id="cod" name="cod" placeholder="OBR-04-26-001" className="bg-white/5 border-white/10 text-white" />
               </div>
               
               <div className="grid grid-cols-2 gap-4">
@@ -108,47 +105,7 @@ export default async function ObrasPage() {
         </Dialog>
       </div>
 
-      <div className="premium-card p-0 overflow-hidden">
-        <Table>
-          <TableHeader className="bg-white/5">
-            <TableRow className="border-white/10">
-              <TableHead className="text-emerald-400">Cód.</TableHead>
-              <TableHead className="text-emerald-400">Cliente</TableHead>
-              <TableHead className="text-emerald-400">Tipo</TableHead>
-              <TableHead className="text-emerald-400">Local</TableHead>
-              <TableHead className="text-emerald-400">Duração</TableHead>
-              <TableHead className="text-emerald-400">Valor</TableHead>
-              <TableHead className="w-[50px]"></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {obras.length === 0 ? (
-              <TableRow className="border-white/10">
-                <TableCell colSpan={7} className="text-center py-10 text-muted-foreground">
-                  Nenhuma obra registada. Adicione o seu primeiro projeto.
-                </TableCell>
-              </TableRow>
-            ) : (
-              obras.map((obra) => (
-                <TableRow key={obra.id} className="border-white/10 hover:bg-white/5">
-                  <TableCell className="font-medium">{obra.cod || "-"}</TableCell>
-                  <TableCell>{obra.cliente}</TableCell>
-                  <TableCell>{obra.tipo || "-"}</TableCell>
-                  <TableCell>{obra.local || "-"}</TableCell>
-                  <TableCell>
-                    {obra.duracao || "-"} 
-                    {obra.inicio && obra.fim && ` (${obra.inicio} a ${obra.fim})`}
-                  </TableCell>
-                  <TableCell>{obra.valor ? `€${obra.valor}` : "-"}</TableCell>
-                  <TableCell>
-                    <ObraRowActions obra={obra} />
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </div>
+      <ObrasClient initialObras={obras} />
     </div>
   );
 }
